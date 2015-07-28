@@ -1,0 +1,44 @@
+﻿@model SequenceCalculatorWebApp.Models.SequencesViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+    <h3>MVC Application to calculate some numeric sequences</h3>
+    @using (Html.BeginForm())
+        {        
+        @Html.ValidationSummary(true)
+        <div>
+            @Html.LabelFor(modelItem => modelItem.InputNumber)
+            @Html.TextBoxFor(modelItem => modelItem.InputNumber)
+            @Html.ValidationMessageFor(modelItem => modelItem.InputNumber)
+             <input type="submit" value="GetSequences" />
+        </div>
+            if (Model != null && Model.AreSequencesGenerated)
+            {
+                <div word-wrap="break-word" style="padding:10px">
+                    @Html.LabelFor(modelItem => Model.AllNumbers)
+                    @Html.DisplayFor(modelItem => Model.AllNumbers)
+                </div>
+                <div word-wrap="break-word" style="padding:10px">
+                    @Html.LabelFor(modelItem => Model.OddNumbers)
+                    @Html.DisplayFor(modelItem => Model.OddNumbers)
+                </div>
+                <div word-wrap="break-word" style="padding:10px">
+                    @Html.LabelFor(modelItem => Model.EvenNumbers)
+                    @Html.DisplayFor(modelItem => Model.EvenNumbers)
+                </div>
+                <div word-wrap="break-word" style="padding:10px">
+                    @Html.LabelFor(modelItem => Model.CustomSequence)
+                    @Html.DisplayFor(modelItem => Model.CustomSequence)
+                </div>
+                <div word-wrap="break-word" style="padding:10px">
+                    @Html.LabelFor(modelItem => Model.FibonacciNumbers)
+                    @Html.DisplayFor(modelItem => Model.FibonacciNumbers)
+                </div>
+            }
+        }
+    </div>
+</div>
+@section Scripts { @Scripts.Render("~/bundles/jqueryval") }
